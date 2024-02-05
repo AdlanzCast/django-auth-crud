@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center mb-4 text-center">Create Task</h1>
+
+            <form action="/tasks/create/" method="POST" class="card card-body">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <button type="submit" class="btn btn-secondary">Save</button>
+            </form>
+
+            {% if error %}
+                <div class="alert alert-danger mt-3">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}
